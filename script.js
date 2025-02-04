@@ -6,7 +6,7 @@ const messages = [
     "I will be very sad...",
     "I will be very very very sad...",
     "Ok fine, I will stop asking...",
-    "Just kidding, say yes please! ❤️"
+    "Just kidding, say yes, please! ❤️"
 ];
 
 const gif_srcs = [
@@ -30,12 +30,14 @@ function handleNoClick() {
     const yesButton = document.querySelector('.yes-button');
     const gifimg = document.getElementById('gif');
     noButton.textContent = messages[messageIndex];
-    messageIndex = (messageIndex + 1) % messages.length;
     // const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
     // yesButton.style.fontSize = `${currentSize * 1.5}px`;
     gifimg.src = gif_srcs[srcIndex];
-    srcIndex = (srcIndex + 1) % gif_srcs.length;
     count = count +1;
+    if (count <9 || count ===9){
+        messageIndex = (messageIndex + 1) % messages.length;
+        srcIndex = (srcIndex + 1) % gif_srcs.length;
+    }
     if (count === 9){
         noButton.textContent = "Yes but red";
     }
